@@ -13,7 +13,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Glint\Glint\Glint\Glint\": "src/"
+            "Glint\\Glint\\": "src/"
         }
     }
 }
