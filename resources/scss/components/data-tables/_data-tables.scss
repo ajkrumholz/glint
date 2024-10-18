@@ -1,0 +1,407 @@
+@import 'data-tables-footer';
+@import 'data-tables-choices';
+@import 'data-tables-actions';
+
+// TODO: break these up into separate files. Use this file for imports only.
+
+.data-table {
+  position: relative;
+}
+
+.data-table-header {
+  background-color: var(--aim-primary-500);
+  padding: var(--step-0);
+  border-top-left-radius: var(--round-lg);
+  border-top-right-radius: var(--round-lg);
+  font-size: var(--step-0);
+
+  // Styles for the header that change when filter/search/etc are present
+  & + .data-table-table {
+    thead {
+      th {
+        &:first-child,
+        &:last-child {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+.data-table-filtering {
+  display: flex;
+  gap: var(--step-0);
+  justify-content: flex-end;
+  position: relative;
+  align-items: center;
+}
+
+.data-table-filtered-by {
+  color: var(--aim-white);
+  font-size: var(--step--1);
+  text-align: right;
+  padding-top: var(--step--1);
+
+  .filter-name {
+    font-weight: 700;
+  }
+}
+
+.data-table-button {
+  color: var(--aim-white);
+  display: grid;
+  align-items: center;
+  gap: calc(var(--step-0) / 2);
+  padding: calc(var(--step-0) / 1.5) var(--step-0);
+  border: solid 1px var(--aim-white);
+  border-radius: var(--round-lg);
+  transition: background-color var(--transition-base);
+  background-color: var(--aim-primary-500);
+  text-align: center;
+
+  &:hover,
+  &:focus,
+  &[aria-expanded='true'] {
+    background-color: var(--aim-primary-900);
+  }
+
+  .icon {
+    width: 1.5em;
+    height: 1.5em;
+    margin-top: -0.25em;
+    margin-bottom: -0.25em;
+  }
+}
+
+.data-table-search {
+  margin-right: auto;
+  background-color: var(--aim-white);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: var(--round-lg);
+  padding: 0.5rem 0.625rem;
+
+  &:focus-within {
+    outline: solid 2px var(--aim-primary-900);
+  }
+
+  &__icon {
+    width: var(--step-1);
+    height: var(--step-1);
+    stroke-width: 0.2em;
+    stroke: var(--aim-primary-500);
+  }
+
+  input[type='search'] {
+    font-size: var(--step-0);
+    border: unset;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+
+.data-table-filters {
+  position: relative;
+
+  .filters {
+    margin-top: var(--step-0);
+    border-radius: var(--round-lg);
+    padding: calc(var(--step-0) * 0.75);
+    display: grid;
+    gap: var(--step-0);
+    position: absolute;
+    background-color: var(--aim-white);
+    z-index: 2;
+    right: 0;
+    width: 400px;
+    max-width: 80vw;
+    box-shadow: var(--shadow-base);
+  }
+
+  .filter-button {
+    grid-template-columns: auto 1fr;
+  }
+
+  .filter-icon {
+    width: var(--step-1);
+    height: var(--step-1);
+    stroke-width: 0.2em;
+  }
+}
+
+// **
+// ** Toggles
+// **
+
+.data-table-toggles {
+  .toggle-menu {
+    z-index: 2;
+    
+    ul {
+      background-color: var(--aim-white);
+      border-radius: var(--round-lg);
+      padding: calc(var(--step-0) / 2);
+      box-shadow: var(--shadow-base);
+      font-size: var(--step-0);
+    }
+  }
+
+  .toggle-menu-button {
+    padding-inline: calc(var(--step-0) / 2);
+  }
+  .toggle-button {
+    text-wrap: nowrap;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--step--1);
+
+    .toggle-button-switch {
+      display: block;
+      position: relative;
+      width: 2em;
+      height: 1em;
+      border-radius: 1em;
+      background-color: var(--aim-primary-50);
+      transition: background-color var(--transition-base);
+      outline: 2px solid var(--aim-primary-500);
+    }
+
+    .toggle-button-switch::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background-color: var(--aim-primary-500);
+      transition: transform var(--transition-base);
+    }
+
+    &[aria-checked='true'] {
+      .toggle-button-switch {
+        background-color: var(--aim-primary-500);
+      }
+      .toggle-button-switch::after {
+        transform: translate3d(100%, 0, 0);
+        background-color: var(--aim-primary-200);
+      }
+    }
+  }
+}
+
+// **
+// ** Table
+// **
+
+.data-table-table {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: overlay;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 2rem;
+    font-size: var(--step-0);
+
+    thead {
+      color: var(--aim-white);
+      text-wrap: nowrap;
+      border-radius: var(--round-lg);
+      overflow: hidden;
+      text-align: left;
+
+      th {
+        vertical-align: middle;
+        padding: var(--step-0);
+        background-color: var(--aim-primary-200);
+
+        // Corners are removed above when filters are present
+        &:first-child {
+          border-top-left-radius: var(--round-lg);
+        }
+
+        &:last-child {
+          border-top-right-radius: var(--round-lg);
+        }
+      }
+
+      // Center header text
+      .center {
+        text-align: center;
+      }
+    }
+
+    // TODO: clean this up
+    tbody {
+      td {
+        padding: var(--step-0);
+        vertical-align: middle;
+      }
+
+      td.td-actions {
+        padding: 0;
+      }
+
+      tr {
+        transition: background-color var(--transition-base);
+
+        &:nth-of-type(even) {
+          background-color: var(--aim-gray-200);
+        }
+
+        &:last-child {
+          td {
+            &:first-child {
+              border-bottom-left-radius: var(--round-lg);
+            }
+
+            &:last-child {
+              border-bottom-right-radius: var(--round-lg);
+            }
+          }
+        }
+
+        &:hover {
+          background-color: var(--aim-gray-100);
+        }
+      }
+    }
+  }
+
+  .data-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--step--2);
+
+    [class^='data-tag-'] {
+      --data-tag-color: var(--spice-0-700);
+      --data-tag-bg: var(--spice-0-100);
+      --data-tag-border: var(--spice-0-700);
+      color: var(--data-tag-color);
+      background-color: var(--data-tag-bg);
+      // border: solid 1px var(--data-tag-border);
+
+      padding: calc(var(--step--2) / 3) var(--step--2);
+      border-radius: var(--round-sm);
+      line-height: 1.1;
+      font-size: 0.875em;
+      text-wrap: nowrap;
+    }
+
+    @for $i from 1 through 10 {
+      .data-tag-#{$i} {
+        --data-tag-color: var(--spice-#{$i}-700);
+        --data-tag-bg: var(--spice-#{$i}-100);
+        --data-tag-border: var(--spice-#{$i}-700);
+      }
+    }
+  }
+}
+
+// .data-table-results {
+// }
+
+.no-results {
+  text-align: center;
+  font-weight: 700;
+  margin: var(--step-0);
+}
+
+// Table column header
+.data-table-column-header {
+  font-weight: 700;
+  font-size: var(--step-0);
+
+  .sort-button {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25em;
+    align-items: end;
+  }
+
+  // Sort icon needs two elements to be styled
+  .sort-icon {
+    width: 0.875em;
+    height: 0.875em;
+    stroke-width: 0.2em;
+
+    & * {
+      opacity: 0.4;
+    }
+  }
+
+  &[aria-sort='ascending'] {
+    // Select the last child of the SVG
+    .sort-icon *:last-child {
+      opacity: 1;
+    }
+  }
+
+  &[aria-sort='descending'] {
+    // Select the first child of the SVG
+    .sort-icon *:first-child {
+      opacity: 1;
+    }
+  }
+}
+
+// **
+// ** Loading spinner
+// **
+.data-table-loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  z-index: 1;
+
+  & > * {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  &__overlay {
+    background-color: var(--aim-white);
+    opacity: 0.75;
+  }
+
+  &__message {
+    display: grid;
+    place-content: center;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--aim-primary-500);
+    border-bottom-color: transparent;
+    border-radius: var(--round-full);
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

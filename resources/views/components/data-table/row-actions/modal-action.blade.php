@@ -1,0 +1,1 @@
+@livewire($action->getComponent(), ['record' => $record, 'modal_data' => $action->getData()])

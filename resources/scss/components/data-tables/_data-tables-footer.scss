@@ -1,0 +1,69 @@
+.data-table-footer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  padding-block-start: var(--step-0);
+  container-type: inline-size;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--step-0);
+
+  .page-select {
+    display: flex;
+    align-items: center;
+    gap: var(--step-0);
+    font-size: var(--step-0);
+
+    label {
+      white-space: nowrap;
+    }
+    select {
+      width: fit-content;
+    }
+  }
+
+  .page-total {
+    font-size: var(--step-0);
+  }
+  // TODO: This a mess, cause I'm trying container queries
+  .page-total {
+    grid-column: 1 / -1;
+  }
+  .page-select {
+    grid-column: 1 / -1;
+  }
+  .pagination {
+    grid-column: 1 / -1;
+
+    .pagination__item {
+      display: none;
+    }
+  }
+
+  @container (min-width: 550px) {
+    .page-total {
+      grid-column: 1 / 2;
+      justify-self: start;
+    }
+    .page-select {
+      grid-column: -2 / -1;
+    }
+    .pagination {
+      grid-column: 1 / -1;
+      .pagination__item {
+        display: block;
+      }
+    }
+  }
+
+  @container (min-width: 780px) {
+    .page-total {
+      grid-column: span 1;
+    }
+    .page-select {
+      grid-column: span 1;
+    }
+    .pagination {
+      grid-column: span 1;
+    }
+  }
+}

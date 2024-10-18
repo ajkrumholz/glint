@@ -1,0 +1,28 @@
+.data-table-choices {
+  .choices__list--multiple .choices__item {
+    background-color: var(--aim-primary-500);
+  }
+
+  .choices__input {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .choices__input {
+    width: unset;
+  }
+
+  // Remove the arrow on select-one
+  .choices[data-type*='select-one']::after {
+    content: none;
+  }
+}
+
+.data-table-filters {
+  [type='date'] {
+    border-radius: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px 7.5px 10px;
+  }
+}
