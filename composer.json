@@ -1,7 +1,17 @@
 {
     "name": "glint/glint",
     "description": "TALL-stack data tables",
-    "type": "composer-plugin",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ben Dempe",
+            "email": "dempeb18@gmail.com"        
+        },
+        {
+            "name": "A.J. Krumholz",
+            "email": "aj@bluehousegroup.com"
+        }
+    ],
     "require": {
         "livewire/livewire": "^3.0@beta"
     },
@@ -15,5 +25,6 @@
         "psr-4": {
             "Glint\\Glint\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
