@@ -28,6 +28,13 @@
             "Glint\\Glint\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Glint\\Glint\\GlintServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
