@@ -5,7 +5,7 @@
     "authors": [
         {
             "name": "Ben Dempe",
-            "email": "dempeb18@gmail.com"        
+            "email": "dempeb18@gmail.com"
         },
         {
             "name": "A.J. Krumholz",
@@ -26,5 +26,11 @@
             "Glint\\Glint\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    }
 }
