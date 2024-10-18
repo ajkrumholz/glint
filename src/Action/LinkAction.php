@@ -36,7 +36,7 @@ class LinkAction extends Action
 
     public function render($record)
     {
-        return view('components.data-table.row-actions.link-action', [
+        return view('components.glint.row-actions.link-action', [
             'record' => $record,
             'action' => $this,
         ]);

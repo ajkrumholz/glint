@@ -50,6 +50,6 @@ class Choices extends Component
 
     public function render()
     {
-        return view('livewire.data-table.choices');
+        return view('livewire.glint.choices');
     }
 }

@@ -1,14 +1,14 @@
-@import 'data-tables-footer';
-@import 'data-tables-choices';
-@import 'data-tables-actions';
+@import 'glints-footer';
+@import 'glints-choices';
+@import 'glints-actions';
 
 // TODO: break these up into separate files. Use this file for imports only.
 
-.data-table {
+.glint {
   position: relative;
 }
 
-.data-table-header {
+.glint-header {
   background-color: var(--aim-primary-500);
   padding: var(--step-0);
   border-top-left-radius: var(--round-lg);
@@ -16,7 +16,7 @@
   font-size: var(--step-0);
 
   // Styles for the header that change when filter/search/etc are present
-  & + .data-table-table {
+  & + .glint-table {
     thead {
       th {
         &:first-child,
@@ -28,7 +28,7 @@
   }
 }
 
-.data-table-filtering {
+.glint-filtering {
   display: flex;
   gap: var(--step-0);
   justify-content: flex-end;
@@ -36,7 +36,7 @@
   align-items: center;
 }
 
-.data-table-filtered-by {
+.glint-filtered-by {
   color: var(--aim-white);
   font-size: var(--step--1);
   text-align: right;
@@ -47,7 +47,7 @@
   }
 }
 
-.data-table-button {
+.glint-button {
   color: var(--aim-white);
   display: grid;
   align-items: center;
@@ -73,7 +73,7 @@
   }
 }
 
-.data-table-search {
+.glint-search {
   margin-right: auto;
   background-color: var(--aim-white);
   display: grid;
@@ -104,7 +104,7 @@
   }
 }
 
-.data-table-filters {
+.glint-filters {
   position: relative;
 
   .filters {
@@ -137,7 +137,7 @@
 // ** Toggles
 // **
 
-.data-table-toggles {
+.glint-toggles {
   .toggle-menu {
     z-index: 2;
     
@@ -199,7 +199,7 @@
 // ** Table
 // **
 
-.data-table-table {
+.glint-table {
   position: relative;
   overflow-x: auto;
   overflow-y: overlay;
@@ -306,7 +306,7 @@
   }
 }
 
-// .data-table-results {
+// .glint-results {
 // }
 
 .no-results {
@@ -316,7 +316,7 @@
 }
 
 // Table column header
-.data-table-column-header {
+.glint-column-header {
   font-weight: 700;
   font-size: var(--step-0);
 
@@ -356,7 +356,7 @@
 // **
 // ** Loading spinner
 // **
-.data-table-loading {
+.glint-loading {
   width: 100%;
   height: 100%;
   position: absolute;

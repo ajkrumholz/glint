@@ -73,7 +73,7 @@ class SelectFilter extends Filter
 
     public function render()
     {
-        return view('components.data-table.filters.select-filter', [
+        return view('components.glint.filters.select-filter', [
             'filter' => $this,
         ]);
     }

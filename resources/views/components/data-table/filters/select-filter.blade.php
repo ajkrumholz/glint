@@ -1,3 +1,3 @@
 <div wire:ignore>
-  @livewire('data-table.choices', [$filter])
+  @livewire('glint.choices', [$filter])
 </div>

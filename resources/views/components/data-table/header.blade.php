@@ -12,7 +12,7 @@
     $is_active = $is_sortable && $sortColumn == $column->getSortColumn();
 @endphp
 
-<th @class(['data-table-column-header', 'center' => $center]) wire:key="{{ $key }}"
+<th @class(['glint-column-header', 'center' => $center]) wire:key="{{ $key }}"
     {{-- aria-sort on active columns only for a11y, and it's used to target it in CSS --}}
     @if ($is_active) aria-sort="{{ $sortAsc == 'asc' ? 'ascending' : 'descending' }}" @endif>
 

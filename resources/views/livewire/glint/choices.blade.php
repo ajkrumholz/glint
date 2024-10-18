@@ -2,7 +2,7 @@
     @vite(['resources/js/choices.js', 'resources/scss/choices.scss'])
 @endassets
 
-<div class="data-table-choices filter-choices form-item" >
+<div class="glint-choices filter-choices form-item" >
     <label for="filter-{{ $field }}">{{ $label }}</label>
     <div id="filter-{{ $field }}" class="filter-choices form-item" x-data="{
         multiple: @entangle('multiple'),

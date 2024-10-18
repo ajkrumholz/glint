@@ -3,12 +3,12 @@
   padding-right: var(--step-0);
   a,
   button {
-    @extend .data-table-button;
+    @extend .glint-button;
     text-wrap: nowrap;
   }
 }
 
-.data-table-actions {
+.glint-actions {
   width: fit-content;
   margin: 0 auto;
 

@@ -34,7 +34,7 @@ class ModalAction extends Action
 
     public function render($record)
     {
-        return view('components.data-table.row-actions.modal-action', [
+        return view('components.glint.row-actions.modal-action', [
             'record' => $record,
             'action' => $this,
         ]);

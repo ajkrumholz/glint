@@ -1,4 +1,4 @@
-.data-table-choices {
+.glint-choices {
   .choices__list--multiple .choices__item {
     background-color: var(--aim-primary-500);
   }
@@ -18,7 +18,7 @@
   }
 }
 
-.data-table-filters {
+.glint-filters {
   [type='date'] {
     border-radius: 0;
     background-color: #f9f9f9;

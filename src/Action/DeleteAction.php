@@ -13,7 +13,7 @@ class DeleteAction extends Action
 
     public function render($record)
     {
-        return view('components.data-table.row-actions.delete-action', [
+        return view('components.glint.row-actions.delete-action', [
             'record' => $record,
             'action' => $this,
         ]);

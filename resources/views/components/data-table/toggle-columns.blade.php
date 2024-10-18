@@ -11,9 +11,9 @@
          }
      }"
      @focusin.window="! $refs.toggleMenu.contains($event.target) && close()"
-     class="data-table-toggles">
+     class="glint-toggles">
 
-    <button class="data-table-button toggle-menu-button"
+    <button class="glint-button toggle-menu-button"
             type="button"
             x-ref="toggleButton"
             :aria-expanded="showToggles"

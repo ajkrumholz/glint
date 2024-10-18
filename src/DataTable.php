@@ -425,7 +425,7 @@ abstract class DataTable extends Component
     public function render()
     {
         return view(
-            'livewire.data-table.data-table',
+            'livewire.glint.glint',
             [
                 'collection' => $this->build(),
                 'headerActions' => $this->getHeaderActions(),

@@ -8,7 +8,7 @@
 @endphp
 
 @if ($activeFilters->isNotEmpty())
-    <div class="data-table-filtered-by" role="status">
+    <div class="glint-filtered-by" role="status">
         @foreach ($activeFilters as $filter)
             @php
                 $label = $filter->getLabel();

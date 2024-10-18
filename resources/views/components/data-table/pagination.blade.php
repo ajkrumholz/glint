@@ -2,7 +2,7 @@
 
 @if ($collection->total() >= $perPageOptions[0])
 
-    <div class="data-table-footer">
+    <div class="glint-footer">
 
         {{-- The count --}}
         <p class="page-total">Showing {{ $collection->firstItem() }} to {{ $collection->lastItem() }} of {{ $collection->total() }}</p>

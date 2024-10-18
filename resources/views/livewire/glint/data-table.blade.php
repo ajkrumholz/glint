@@ -3,46 +3,46 @@
     $show_data_table_header = $showSearch || !empty($headerActions) || !empty($tableFilters) || !empty($toggles);
 @endphp
 
-<div class="data-table" x-data="{
+<div class="glint" x-data="{
     filterMessage: '',
     updateFilterMessage(message) {
         this.filterMessage = message
     }
 }">
     @if ($show_data_table_header)
-        <div class="data-table-header">
+        <div class="glint-header">
 
             {{-- Filtering --}}
-            <form wire:submit.prevent class="form data-table-filtering">
+            <form wire:submit.prevent class="form glint-filtering">
                 @if ($showSearch)
-                    <x-data-table.search />
+                    <x-glint.search />
                 @endif
                 @foreach ($headerActions as $action)
-                    <x-data-table.header-action :$action />
+                    <x-glint.header-action :$action />
                 @endforeach
 
                 @if (!empty($tableFilters))
-                    <x-data-table.filters :$tableFilters />
+                    <x-glint.filters :$tableFilters />
                 @endif
 
                 {{-- Toggles --}}
                 @if (!empty($toggleColumns))
-                  <x-data-table.toggle-columns :$toggleColumns />
+                  <x-glint.toggle-columns :$toggleColumns />
                 @endif
             </form>
 
             {{-- Filter Indicator Display --}}
             @if (!empty($tableFilters))
-                <x-data-table.filter-indicators :$tableFilters :$filters />
+                <x-glint.filter-indicators :$tableFilters :$filters />
             @endif
         </div>
     @endif
 
     {{-- Data Table --}}
-    <div class="data-table-table">
-        <div wire:loading.grid class="data-table-loading">
-            <div class="data-table-loading__overlay"></div>
-            <div class="data-table-loading__message" role="status">
+    <div class="glint-table">
+        <div wire:loading.grid class="glint-loading">
+            <div class="glint-loading__overlay"></div>
+            <div class="glint-loading__message" role="status">
                 <span class="loader"></span>
                 <span class="visually-hidden">Loading…</span>
             </div>
@@ -57,12 +57,12 @@
                     {{-- TODO: Toggleable fields --}}
                     @foreach ($columns as $column)
                         @if ($column->isVisible())
-                            <x-data-table.header key="{{ $loop->index }}" :$column :$sortColumn :$sortAsc />
+                            <x-glint.header key="{{ $loop->index }}" :$column :$sortColumn :$sortAsc />
                         @endif
                     @endforeach
 
                     @if (!empty($rowActions))
-                        <x-data-table.header key="actions" label="Actions" center />
+                        <x-glint.header key="actions" label="Actions" center />
                     @endif
                 </tr>
             </thead>
@@ -78,7 +78,7 @@
                             @endforeach
 
                             @if (!empty($rowActions))
-                                <x-data-table.row-actions :$rowActions :$item />
+                                <x-glint.row-actions :$rowActions :$item />
                             @endif
                         </tr>
                     @endforeach
@@ -92,5 +92,5 @@
     @endif
 
     {{-- Pagination --}}
-    <x-data-table.pagination :$collection :$perPageOptions />
+    <x-glint.pagination :$collection :$perPageOptions />
 </div>

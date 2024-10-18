@@ -21,7 +21,7 @@
             </div>
         @else
             {{-- Actions List --}}
-            <div x-data="{ showActions: false, close() { this.showActions = false } }" x-id="['row-actions']" class="data-table-actions"
+            <div x-data="{ showActions: false, close() { this.showActions = false } }" x-id="['row-actions']" class="glint-actions"
                 @focusin.window="! $root.contains($event.target) && close()"@keydown.escape.window="close()">
                 <button @click.prevent="showActions = !showActions" type="button" x-ref="actionsButton"
                     :id="$id('row-actions', 'button')" :aria-controls="$id('row-actions')" :aria-expanded="showActions"
