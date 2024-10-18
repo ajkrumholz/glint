@@ -2,6 +2,7 @@
 
 namespace Glint\Glint;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class GlintServiceProvider extends ServiceProvider
@@ -26,6 +27,6 @@ class GlintServiceProvider extends ServiceProvider
         ], ['glint', 'glint-config']);
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'glint');
-
+        Blade::componentNameSpace('Glint\\Views\\Components', 'glint');
     }
 }

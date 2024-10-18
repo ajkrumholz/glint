@@ -15,25 +15,25 @@
             {{-- Filtering --}}
             <form wire:submit.prevent class="form glint-filtering">
                 @if ($showSearch)
-                    <x-glint.search />
+                    <x-glint::search />
                 @endif
                 @foreach ($headerActions as $action)
-                    <x-glint.header-action :$action />
+                    <x-glint::header-action :$action />
                 @endforeach
 
                 @if (!empty($tableFilters))
-                    <x-glint.filters :$tableFilters />
+                    <x-glint::filters :$tableFilters />
                 @endif
 
                 {{-- Toggles --}}
                 @if (!empty($toggleColumns))
-                  <x-glint.toggle-columns :$toggleColumns />
+                  <x-glint::toggle-columns :$toggleColumns />
                 @endif
             </form>
 
             {{-- Filter Indicator Display --}}
             @if (!empty($tableFilters))
-                <x-glint.filter-indicators :$tableFilters :$filters />
+                <x-glint::filter-indicators :$tableFilters :$filters />
             @endif
         </div>
     @endif
@@ -57,12 +57,12 @@
                     {{-- TODO: Toggleable fields --}}
                     @foreach ($columns as $column)
                         @if ($column->isVisible())
-                            <x-glint.header key="{{ $loop->index }}" :$column :$sortColumn :$sortAsc />
+                            <x-glint::header key="{{ $loop->index }}" :$column :$sortColumn :$sortAsc />
                         @endif
                     @endforeach
 
                     @if (!empty($rowActions))
-                        <x-glint.header key="actions" label="Actions" center />
+                        <x-glint::header key="actions" label="Actions" center />
                     @endif
                 </tr>
             </thead>
@@ -78,7 +78,7 @@
                             @endforeach
 
                             @if (!empty($rowActions))
-                                <x-glint.row-actions :$rowActions :$item />
+                                <x-glint::row-actions :$rowActions :$item />
                             @endif
                         </tr>
                     @endforeach
@@ -92,5 +92,5 @@
     @endif
 
     {{-- Pagination --}}
-    <x-glint.pagination :$collection :$perPageOptions />
+    <x-glint::pagination :$collection :$perPageOptions />
 </div>
